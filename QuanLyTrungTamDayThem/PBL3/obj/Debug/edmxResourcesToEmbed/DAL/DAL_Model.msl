@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLTTDayThemStoreContainer" CdmEntityContainer="QLTTDTEntities">
+    <EntitySetMapping Name="Adminns">
+      <EntityTypeMapping TypeName="QLTTDayThem.Adminn">
+        <MappingFragment StoreEntitySet="Adminn">
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BienLais">
+      <EntityTypeMapping TypeName="QLTTDayThem.BienLai">
+        <MappingFragment StoreEntitySet="BienLai">
+          <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+          <ScalarProperty Name="MaHV" ColumnName="MaHV" />
+          <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiaoViens">
+      <EntityTypeMapping TypeName="QLTTDayThem.GiaoVien">
+        <MappingFragment StoreEntitySet="GiaoVien">
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="ChuyenMon" ColumnName="ChuyenMon" />
+          <ScalarProperty Name="TrinhDo" ColumnName="TrinhDo" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HocViens">
+      <EntityTypeMapping TypeName="QLTTDayThem.HocVien">
+        <MappingFragment StoreEntitySet="HocVien">
+          <ScalarProperty Name="MaHV" ColumnName="MaHV" />
+          <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LopHocs">
+      <EntityTypeMapping TypeName="QLTTDayThem.LopHoc">
+        <MappingFragment StoreEntitySet="LopHoc">
+          <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+          <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+          <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonHocs">
+      <EntityTypeMapping TypeName="QLTTDayThem.MonHoc">
+        <MappingFragment StoreEntitySet="MonHoc">
+          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+          <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+          <ScalarProperty Name="ThoiGianHoc" ColumnName="ThoiGianHoc" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

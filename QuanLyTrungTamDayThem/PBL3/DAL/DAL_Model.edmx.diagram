@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4e4250d2af14148b312137d1aa96e6d" Name="Diagram1">
+        <EntityTypeShape EntityType="QLTTDayThem.Adminn" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTDayThem.BienLai" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTDayThem.GiaoVien" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTDayThem.HocVien" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTDayThem.LopHoc" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLTTDayThem.MonHoc" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="QLTTDayThem.FK_MaHV_BienLai" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTDayThem.FK_MaLH_BienLai" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTDayThem.FK_MaGV_MonHoc" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTDayThem.FK_MaLH_HocVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QLTTDayThem.FK_MaLH_MonHoc" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTTDayThem.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adminn">
+          <Key>
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="10" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="BienLai">
+          <Key>
+            <PropertyRef Name="MaHV" />
+          </Key>
+          <Property Name="MaLH" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaHV" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="HocPhi" Type="int" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="20" />
+          <Property Name="NamSinh" Type="date" />
+          <Property Name="GioiTinh" Type="bit" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChuyenMon" Type="nvarchar" MaxLength="20" />
+          <Property Name="TrinhDo" Type="nvarchar" MaxLength="15" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="HocVien">
+          <Key>
+            <PropertyRef Name="MaHV" />
+          </Key>
+          <Property Name="MaHV" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="MaLH" Type="varchar" MaxLength="5" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="20" />
+          <Property Name="NamSinh" Type="date" />
+          <Property Name="GioiTinh" Type="bit" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="varchar" MaxLength="10" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LopHoc">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenLop" Type="varchar" MaxLength="20" />
+          <Property Name="SiSo" Type="int" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenMon" Type="nvarchar" MaxLength="20" />
+          <Property Name="MaGV" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="MaLH" Type="varchar" MaxLength="5" />
+          <Property Name="ThoiGianHoc" Type="nvarchar" MaxLength="20" />
+          <Property Name="NgayBatDau" Type="date" />
+          <Property Name="NgayKetThuc" Type="date" />
+        </EntityType>
+        <Association Name="FK_MaGV_MonHoc">
+          <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiaoVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="MonHoc">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaHV_BienLai">
+          <End Role="HocVien" Type="Self.HocVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BienLai" Type="Self.BienLai" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HocVien">
+              <PropertyRef Name="MaHV" />
+            </Principal>
+            <Dependent Role="BienLai">
+              <PropertyRef Name="MaHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_BienLai">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="1" />
+          <End Role="BienLai" Type="Self.BienLai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="BienLai">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_HocVien">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HocVien" Type="Self.HocVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="HocVien">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_MonHoc">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="MonHoc">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTTDayThemStoreContainer">
+          <EntitySet Name="Adminn" EntityType="Self.Adminn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BienLai" EntityType="Self.BienLai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiaoVien" EntityType="Self.GiaoVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HocVien" EntityType="Self.HocVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopHoc" EntityType="Self.LopHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MaGV_MonHoc" Association="Self.FK_MaGV_MonHoc">
+            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="MonHoc" EntitySet="MonHoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaHV_BienLai" Association="Self.FK_MaHV_BienLai">
+            <End Role="HocVien" EntitySet="HocVien" />
+            <End Role="BienLai" EntitySet="BienLai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_BienLai" Association="Self.FK_MaLH_BienLai">
+            <End Role="LopHoc" EntitySet="LopHoc" />
+            <End Role="BienLai" EntitySet="BienLai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_HocVien" Association="Self.FK_MaLH_HocVien">
+            <End Role="LopHoc" EntitySet="LopHoc" />
+            <End Role="HocVien" EntitySet="HocVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_MonHoc" Association="Self.FK_MaLH_MonHoc">
+            <End Role="LopHoc" EntitySet="LopHoc" />
+            <End Role="MonHoc" EntitySet="MonHoc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTTDayThem" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adminn">
+          <Key>
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TaiKhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ChucVu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BienLai">
+          <Key>
+            <PropertyRef Name="MaHV" />
+          </Key>
+          <Property Name="MaLH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaHV" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HocPhi" Type="Int32" />
+          <Property Name="TinhTrang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HocVien" Relationship="Self.FK_MaHV_BienLai" FromRole="BienLai" ToRole="HocVien" />
+          <NavigationProperty Name="LopHoc" Relationship="Self.FK_MaLH_BienLai" FromRole="BienLai" ToRole="LopHoc" />
+        </EntityType>
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NamSinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="Boolean" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChuyenMon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TrinhDo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MonHocs" Relationship="Self.FK_MaGV_MonHoc" FromRole="GiaoVien" ToRole="MonHoc" />
+        </EntityType>
+        <EntityType Name="HocVien">
+          <Key>
+            <PropertyRef Name="MaHV" />
+          </Key>
+          <Property Name="MaHV" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HoTen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NamSinh" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="Boolean" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TinhTrang" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BienLai" Relationship="Self.FK_MaHV_BienLai" FromRole="HocVien" ToRole="BienLai" />
+          <NavigationProperty Name="LopHoc" Relationship="Self.FK_MaLH_HocVien" FromRole="HocVien" ToRole="LopHoc" />
+        </EntityType>
+        <EntityType Name="LopHoc">
+          <Key>
+            <PropertyRef Name="MaLH" />
+          </Key>
+          <Property Name="MaLH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenLop" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SiSo" Type="Int32" />
+          <NavigationProperty Name="BienLais" Relationship="Self.FK_MaLH_BienLai" FromRole="LopHoc" ToRole="BienLai" />
+          <NavigationProperty Name="HocViens" Relationship="Self.FK_MaLH_HocVien" FromRole="LopHoc" ToRole="HocVien" />
+          <NavigationProperty Name="MonHocs" Relationship="Self.FK_MaLH_MonHoc" FromRole="LopHoc" ToRole="MonHoc" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMH" />
+          </Key>
+          <Property Name="MaMH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenMon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MaGV" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLH" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ThoiGianHoc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GiaoVien" Relationship="Self.FK_MaGV_MonHoc" FromRole="MonHoc" ToRole="GiaoVien" />
+          <NavigationProperty Name="LopHoc" Relationship="Self.FK_MaLH_MonHoc" FromRole="MonHoc" ToRole="LopHoc" />
+        </EntityType>
+        <Association Name="FK_MaHV_BienLai">
+          <End Role="HocVien" Type="Self.HocVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BienLai" Type="Self.BienLai" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HocVien">
+              <PropertyRef Name="MaHV" />
+            </Principal>
+            <Dependent Role="BienLai">
+              <PropertyRef Name="MaHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_BienLai">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="1" />
+          <End Role="BienLai" Type="Self.BienLai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="BienLai">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaGV_MonHoc">
+          <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiaoVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="MonHoc">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_HocVien">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HocVien" Type="Self.HocVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="HocVien">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaLH_MonHoc">
+          <End Role="LopHoc" Type="Self.LopHoc" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHoc">
+              <PropertyRef Name="MaLH" />
+            </Principal>
+            <Dependent Role="MonHoc">
+              <PropertyRef Name="MaLH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTTDTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adminns" EntityType="Self.Adminn" />
+          <EntitySet Name="BienLais" EntityType="Self.BienLai" />
+          <EntitySet Name="GiaoViens" EntityType="Self.GiaoVien" />
+          <EntitySet Name="HocViens" EntityType="Self.HocVien" />
+          <EntitySet Name="LopHocs" EntityType="Self.LopHoc" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <AssociationSet Name="FK_MaHV_BienLai" Association="Self.FK_MaHV_BienLai">
+            <End Role="HocVien" EntitySet="HocViens" />
+            <End Role="BienLai" EntitySet="BienLais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_BienLai" Association="Self.FK_MaLH_BienLai">
+            <End Role="LopHoc" EntitySet="LopHocs" />
+            <End Role="BienLai" EntitySet="BienLais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaGV_MonHoc" Association="Self.FK_MaGV_MonHoc">
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="MonHoc" EntitySet="MonHocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_HocVien" Association="Self.FK_MaLH_HocVien">
+            <End Role="LopHoc" EntitySet="LopHocs" />
+            <End Role="HocVien" EntitySet="HocViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaLH_MonHoc" Association="Self.FK_MaLH_MonHoc">
+            <End Role="LopHoc" EntitySet="LopHocs" />
+            <End Role="MonHoc" EntitySet="MonHocs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTTDayThemStoreContainer" CdmEntityContainer="QLTTDTEntities">
+          <EntitySetMapping Name="Adminns">
+            <EntityTypeMapping TypeName="QLTTDayThem.Adminn">
+              <MappingFragment StoreEntitySet="Adminn">
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="ChucVu" ColumnName="ChucVu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BienLais">
+            <EntityTypeMapping TypeName="QLTTDayThem.BienLai">
+              <MappingFragment StoreEntitySet="BienLai">
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="MaHV" ColumnName="MaHV" />
+                <ScalarProperty Name="HocPhi" ColumnName="HocPhi" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiaoViens">
+            <EntityTypeMapping TypeName="QLTTDayThem.GiaoVien">
+              <MappingFragment StoreEntitySet="GiaoVien">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="ChuyenMon" ColumnName="ChuyenMon" />
+                <ScalarProperty Name="TrinhDo" ColumnName="TrinhDo" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HocViens">
+            <EntityTypeMapping TypeName="QLTTDayThem.HocVien">
+              <MappingFragment StoreEntitySet="HocVien">
+                <ScalarProperty Name="MaHV" ColumnName="MaHV" />
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopHocs">
+            <EntityTypeMapping TypeName="QLTTDayThem.LopHoc">
+              <MappingFragment StoreEntitySet="LopHoc">
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+                <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="QLTTDayThem.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="MaLH" ColumnName="MaLH" />
+                <ScalarProperty Name="ThoiGianHoc" ColumnName="ThoiGianHoc" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
