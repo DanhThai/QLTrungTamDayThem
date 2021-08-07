@@ -40,6 +40,7 @@ namespace PBL3
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Name = "label1";
             // 
             // label2
@@ -54,22 +55,27 @@ namespace PBL3
             // 
             // btnThem
             // 
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(3)))), ((int)(((byte)(62)))));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnThem, "btnThem");
             this.btnThem.Name = "btnThem";
-            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnThoat
             // 
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(3)))), ((int)(((byte)(62)))));
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(this.btnThoat, "btnThoat");
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmLop
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(140)))), ((int)(((byte)(180)))));
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.txtTenLop);

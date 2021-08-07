@@ -32,6 +32,8 @@ namespace PBL3
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pnThongTin = new System.Windows.Forms.Panel();
+            this.cboBuoi = new System.Windows.Forms.ComboBox();
+            this.cboThu = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.cboMonHoc = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,8 +60,6 @@ namespace PBL3
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThemLop = new System.Windows.Forms.Button();
             this.dgvHienThiKH = new System.Windows.Forms.DataGridView();
-            this.cboThu = new System.Windows.Forms.ComboBox();
-            this.cboBuoi = new System.Windows.Forms.ComboBox();
             this.pnThongTin.SuspendLayout();
             this.pnChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHienThiKH)).BeginInit();
@@ -105,14 +105,32 @@ namespace PBL3
             this.pnThongTin.Size = new System.Drawing.Size(1202, 221);
             this.pnThongTin.TabIndex = 2;
             // 
+            // cboBuoi
+            // 
+            this.cboBuoi.FormattingEnabled = true;
+            this.cboBuoi.Location = new System.Drawing.Point(723, 28);
+            this.cboBuoi.Name = "cboBuoi";
+            this.cboBuoi.Size = new System.Drawing.Size(168, 28);
+            this.cboBuoi.TabIndex = 27;
+            // 
+            // cboThu
+            // 
+            this.cboThu.FormattingEnabled = true;
+            this.cboThu.Location = new System.Drawing.Point(516, 28);
+            this.cboThu.Name = "cboThu";
+            this.cboThu.Size = new System.Drawing.Size(168, 28);
+            this.cboThu.TabIndex = 26;
+            // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(3)))), ((int)(((byte)(62)))));
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(948, 25);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 33);
             this.button1.TabIndex = 25;
             this.button1.Text = "Lịch Bận";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cboMonHoc
@@ -154,7 +172,7 @@ namespace PBL3
             this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(3)))), ((int)(((byte)(62)))));
             this.btnThoat.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThoat.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Location = new System.Drawing.Point(859, 155);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 40);
@@ -168,7 +186,7 @@ namespace PBL3
             this.btnThemLHP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(3)))), ((int)(((byte)(62)))));
             this.btnThemLHP.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnThemLHP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemLHP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnThemLHP.ForeColor = System.Drawing.Color.White;
             this.btnThemLHP.Location = new System.Drawing.Point(723, 154);
             this.btnThemLHP.Name = "btnThemLHP";
             this.btnThemLHP.Size = new System.Drawing.Size(116, 40);
@@ -407,22 +425,6 @@ namespace PBL3
             this.dgvHienThiKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHienThiKH.Size = new System.Drawing.Size(1202, 269);
             this.dgvHienThiKH.TabIndex = 3;
-            // 
-            // cboThu
-            // 
-            this.cboThu.FormattingEnabled = true;
-            this.cboThu.Location = new System.Drawing.Point(516, 28);
-            this.cboThu.Name = "cboThu";
-            this.cboThu.Size = new System.Drawing.Size(168, 28);
-            this.cboThu.TabIndex = 26;
-            // 
-            // cboBuoi
-            // 
-            this.cboBuoi.FormattingEnabled = true;
-            this.cboBuoi.Location = new System.Drawing.Point(723, 28);
-            this.cboBuoi.Name = "cboBuoi";
-            this.cboBuoi.Size = new System.Drawing.Size(168, 28);
-            this.cboBuoi.TabIndex = 27;
             // 
             // frmLopHocPhan
             // 

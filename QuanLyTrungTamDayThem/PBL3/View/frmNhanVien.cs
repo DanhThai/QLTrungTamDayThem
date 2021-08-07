@@ -91,10 +91,18 @@ namespace PBL3
                 // thêm tk
                 if (btnThem1NV.Text == "Thêm")
                 {
-                    ad.TaiKhoan = txtTaiKhoanNV.Text;
+
+                    if (BLL_Admin.Instance.FindTK(txtTaiKhoanNV.Text))
+                        ad.TaiKhoan = txtTaiKhoanNV.Text;
+                    else
+                    {
+                        MessageBox.Show("Tài khoản đã tồn tại", "Nhập thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                 }
                 // sửa thông tin
-                else
+                if (btnThem1NV.Text == "Sửa")
                 {
                     string tk = dgvHienThiThongTinNV.SelectedRows[0].Cells["TaiKhoan"].Value.ToString();
                     ad.TaiKhoan = tk;

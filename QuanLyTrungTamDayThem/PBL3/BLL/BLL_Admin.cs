@@ -55,6 +55,13 @@ namespace PBL3.BLL
             QLTTDayThem db = new QLTTDayThem();
             return db.Adminns.Find(tk);
         }
+        public bool FindTK(string tk)
+        {
+            QLTTDayThem db = new QLTTDayThem();
+            if (db.Adminns.Find(tk) != null)
+                return false;
+            return true;
+        }
         public void ExecuteDB(Adminn a)
         {
             QLTTDayThem db = new QLTTDayThem();

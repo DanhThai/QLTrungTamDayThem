@@ -24,8 +24,8 @@ namespace PBL3
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtTenLop.Text == "")
-                MessageBox.Show("Hãy nhập tên lớp", "Thêm Lớp");
+            if (txtTenLop.Text == ""|| BLL_LopHocPhan.Instance.CheckTen(txtTenLop.Text)==false)
+                MessageBox.Show("Hãy nhập lại tên lớp", "Thêm Lớp");
             else
             {
                 DialogResult dr= MessageBox.Show("Bạn muốn thêm lớp không", "Lớp Học", MessageBoxButtons.OKCancel);

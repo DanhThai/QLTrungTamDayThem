@@ -175,6 +175,16 @@ namespace PBL3.BLL
                 db.SaveChanges();
             }
         }
+        public bool CheckTen(string tenlop)
+        {
+            QLTTDayThem db = new QLTTDayThem();
+            var a = from p in db.LopHocs where p.TenLop==tenlop select p;
+            if (a == null)
+                return true;
+            else
+                return false;
+            
+        }
         public void ThemLop(string tenlop)
         {
             QLTTDayThem db = new QLTTDayThem();
