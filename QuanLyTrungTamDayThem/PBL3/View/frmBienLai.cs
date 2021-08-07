@@ -75,7 +75,8 @@ namespace PBL3
                 string malop = ((CbbItem)cboChonLop.SelectedItem).value;
                 ShowDgv(malop, cboHienThiDS.SelectedItem.ToString(), txtHoTen.Text);
             }    
-            
+            else
+                MessageBox.Show("Nhập đầy đủ thông tin", "Tìm kiếm", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public void ShowDgv(string malop, string tinhtrang, string hoten)
         {

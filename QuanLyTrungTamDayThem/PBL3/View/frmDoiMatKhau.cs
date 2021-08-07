@@ -23,8 +23,11 @@ namespace PBL3
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(txtMatKhauMoi.Text==txtXacNhanMatKhau.Text && txtMatKhauCu.Text==ad.MatKhau)
+            if (txtMatKhauMoi.Text == txtXacNhanMatKhau.Text && txtMatKhauCu.Text == ad.MatKhau)
+            {
                 BLL_Admin.Instance.DoiMatKhau(ad.TaiKhoan, txtMatKhauMoi.Text);
+                MessageBox.Show("Thay đổi mật khẩu thành công", "Đổi Mật Khẩu", MessageBoxButtons.OK);
+            }
             else
                 MessageBox.Show(" Mật khẩu không chính xác", "Đổi Mật Khẩu", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

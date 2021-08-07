@@ -39,7 +39,7 @@ namespace PBL3.BLL
         public List<Adminn> GetListAdmin(string cv)
         {
             QLTTDayThem db = new QLTTDayThem();
-            if (cv == "All")
+            if (cv == "Tất cả")
             {
                 var l = from p in db.Adminns select p;
                 return l.ToList();
