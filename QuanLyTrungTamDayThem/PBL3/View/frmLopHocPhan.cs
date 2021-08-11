@@ -144,7 +144,7 @@ namespace PBL3
         {
             if(txtTenLop.Text==""||cboThu.SelectedItem == null || cboBuoi.SelectedItem==null||cboGiaoVien.SelectedItem==null
                 ||cboMonHoc.SelectedItem==null|| dtpNgayBatDau.Value >= dtpNgayKetThuc.Value)
-                MessageBox.Show("Hãy nhập lại thông tin", "Nhập thông tin Lớp Học Phần", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập lại đầy đủ thông tin", "Nhập thông tin Lớp Học Phần", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {               
 

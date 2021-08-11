@@ -81,8 +81,8 @@ namespace PBL3
         private void btnThem1NV_Click(object sender, EventArgs e)
         {
             // check điều kiện
-            if (txtMatKhauNV.Text==""|| txtTaiKhoanNV.Text=="")
-                MessageBox.Show("Hãy nhập lại thông tin", "Nhập thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (txtMatKhauNV.Text==""|| txtTaiKhoanNV.Text==""|| cboCongViec.SelectedIndex<=0)
+                MessageBox.Show("Hãy nhập lại đầy đủ thông tin", "Nhập thông tin", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 Adminn ad = new Adminn();

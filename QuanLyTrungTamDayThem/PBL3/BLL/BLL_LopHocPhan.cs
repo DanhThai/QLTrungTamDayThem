@@ -175,11 +175,11 @@ namespace PBL3.BLL
                 db.SaveChanges();
             }
         }
-        public bool CheckTen(string tenlop)
+        public bool CheckTenLop(string tenlop)
         {
             QLTTDayThem db = new QLTTDayThem();
-            var a = from p in db.LopHocs where p.TenLop==tenlop select p;
-            if (a == null)
+            var a = from p in db.LopHocs where p.TenLop.Contains(tenlop) select p;
+            if (a.Count() <=0)
                 return true;
             else
                 return false;

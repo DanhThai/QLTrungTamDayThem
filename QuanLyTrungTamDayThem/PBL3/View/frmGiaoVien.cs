@@ -77,8 +77,7 @@ namespace PBL3
                 // set dữ liệu lên view
                 txtHoTenGV.Text = gv.HoTen;
                 txtDiaChiGV.Text = gv.DiaChi;
-                txtSDTGV.Text = gv.SDT;
-                //cboChuyenMon.Text = gv.ChuyenMon;
+                txtSDTGV.Text = gv.SDT;           
                 if (gv.ChuyenMon.Contains("Toán")) ckbToan.Checked = true;
                 if (gv.ChuyenMon.Contains("Anh")) ckbAnh.Checked = true;
                 if (gv.ChuyenMon.Contains("Văn")) ckbVan.Checked = true;
@@ -101,8 +100,10 @@ namespace PBL3
         private void btnThem1GV_Click(object sender, EventArgs e)
         {
             // check điều kiện
-            if (txtHoTenGV.Text == "" || txtDiaChiGV.Text == "" || txtSDTGV.Text == "" ||  txtTrinhDo.Text == "" || HocVien.CheckSDT(txtSDTGV.Text) == false)
-                MessageBox.Show("Hãy nhập lại thông tin", "Nhập thông tin Giáo Viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (txtHoTenGV.Text == "" || txtDiaChiGV.Text == "" || txtSDTGV.Text == "" ||  txtTrinhDo.Text == "" 
+                || HocVien.CheckSDT(txtSDTGV.Text) == false||(ckbAnh.Checked==false&& ckbToan.Checked==false&&ckbVan.Checked==false))
+
+                MessageBox.Show("Hãy nhập lại đầy đủ thông tin", "Nhập thông tin Giáo Viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 GiaoVien gv = new GiaoVien();

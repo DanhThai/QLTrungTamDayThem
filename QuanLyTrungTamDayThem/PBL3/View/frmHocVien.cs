@@ -86,8 +86,8 @@ namespace PBL3
         private void btnThem1HV_Click(object sender, EventArgs e)
         {
             // check điều kiện
-            if (txtHoTenHV.Text == "" || txtDiaChiHV.Text == "" || txtSDTHV.Text == "" || txtTinhTrang.Text == ""||HocVien.CheckSDT(txtSDTHV.Text)==false)
-                MessageBox.Show("Hãy nhập lại thông tin", "Nhập thông tin Học Viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (txtHoTenHV.Text == "" || txtDiaChiHV.Text == "" || txtSDTHV.Text == "" || txtTinhTrang.Text == ""||HocVien.CheckSDT(txtSDTHV.Text)==false||cboLopHoc.SelectedIndex<0)
+                MessageBox.Show("Hãy nhập lại đầy đủ thông tin", "Nhập thông tin Học Viên", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 HocVien hv = new HocVien();
