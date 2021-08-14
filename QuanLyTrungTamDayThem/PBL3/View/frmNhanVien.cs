@@ -24,11 +24,11 @@ namespace PBL3
         {
             cboCongViec.Items.AddRange(new string[]
             {
-               "Admin","Nhân viên", "Kế toán"
+               "Admin","Nhân viên quản lý", "Nhân viên kế toán"
             });
             cboHienThiTheo.Items.AddRange(new string[]
             {
-                "Tất cả","Admin","Nhân viên", "Kế toán"
+                "Tất cả","Admin","Nhân viên quản lý", "Nhân viên kế toán"
             });
             cboHienThiTheo.SelectedIndex = 0;
 

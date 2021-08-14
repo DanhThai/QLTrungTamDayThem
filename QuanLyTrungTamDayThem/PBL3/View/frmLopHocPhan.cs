@@ -25,6 +25,8 @@ namespace PBL3
         {
             cboMonHoc.Items.Clear();
             cboChonLop.Items.Clear();
+            cboBuoi.Items.Clear();
+            cboThu.Items.Clear();
             cboMonHoc.Items.AddRange(new string[]
             {
                 "Toán","Anh","Văn"

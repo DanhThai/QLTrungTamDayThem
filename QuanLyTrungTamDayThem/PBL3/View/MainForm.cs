@@ -30,14 +30,13 @@ namespace PBL3
         public void setQuyen(string s)
         {
             lblNameActor.Text = s;
-            if (s=="Nhân viên")
+            if (s=="Nhân viên quản lý")
             {
                 btnBienLai.Visible = false;
                 btnNhanVien.Visible = false;
             }  
-            if(s=="Kế toán")
-            {
-                
+            if(s=="Nhân viên kế toán")
+            {               
                 btnGiaoVien.Visible = false;
                 btnHocVien.Visible = false;
                 btnLopHoc.Visible = false;
@@ -180,8 +179,8 @@ namespace PBL3
         {
             DialogResult dr = MessageBox.Show("Bạn có muốn thoát không", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
-                //Application.Exit();
-                Application.ExitThread();
+                Application.Exit();
+                //Application.ExitThread();
             else
                 e.Cancel = true;
         }

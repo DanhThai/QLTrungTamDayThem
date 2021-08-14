@@ -26,10 +26,6 @@ namespace PBL3
             cboSapXep.Items.Add("Họ Tên");
             cboSapXep.Items.Add("Trình Độ");
             cboSapXep.Items.Add("Chuyên Môn");
-            //cboChuyenMon.Items.AddRange(new string[]
-            //{
-            //    "Toán","Anh","Văn"
-            //});
         }
         public void ShowDgv( string hoten)
         {
@@ -53,7 +49,6 @@ namespace PBL3
             txtHoTenGV.Text = "";
             txtDiaChiGV.Text = "";
             txtSDTGV.Text = "";
-            //cboChuyenMon.Text = "";
             ckbAnh.Checked = false;
             ckbToan.Checked = false;
             ckbVan.Checked = false;
@@ -140,14 +135,6 @@ namespace PBL3
                 }
             }
         }
-        public string XulyMaGV()
-        {
-            QLTTDayThem db = new QLTTDayThem();
-            // tìm hv cuối cùng của danh sách
-            GiaoVien gv = db.GiaoViens.OrderByDescending(x => x.MaGV).Take(1).Single();
-
-            return GiaoVien.TangMaGV(gv.MaGV);
-        }
 
         private void btnXoaGV_Click(object sender, EventArgs e)
         {
@@ -174,8 +161,6 @@ namespace PBL3
         private void cboSapXep_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgvHienThiThongTinGV.DataSource = BLL_GiaoVien.Instance.SortGV(cboSapXep.SelectedItem.ToString());
-        }
-
-       
+        }     
     }
 }
