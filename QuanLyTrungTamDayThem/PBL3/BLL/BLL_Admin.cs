@@ -36,7 +36,7 @@ namespace PBL3.BLL
             db.SaveChanges();
         }
         
-        public List<Adminn> GetListAdmin(string cv)
+        public List<Adminn> GetListNhanVien(string cv)
         {
             QLTTDayThem db = new QLTTDayThem();
             if (cv == "Tất cả")
@@ -78,13 +78,7 @@ namespace PBL3.BLL
                 db.SaveChanges();
             }
         }
-        public bool CheckTK(string tk)
-        {
-            QLTTDayThem db = new QLTTDayThem();
-            Adminn ad = db.Adminns.Find(tk);
-            if (ad != null) return true;
-            else return false;
-        }
+        
         public void XoaTK(List<string> tk)
         {
             QLTTDayThem db = new QLTTDayThem();

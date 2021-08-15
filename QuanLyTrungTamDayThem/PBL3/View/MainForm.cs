@@ -179,8 +179,8 @@ namespace PBL3
         {
             DialogResult dr = MessageBox.Show("Bạn có muốn thoát không", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
-                Application.Exit();
-                //Application.ExitThread();
+                //Application.Exit();
+                Application.ExitThread();
             else
                 e.Cancel = true;
         }

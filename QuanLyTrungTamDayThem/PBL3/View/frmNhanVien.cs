@@ -75,7 +75,7 @@ namespace PBL3
         }
         public void ShowDgv(string cv)
         {
-            dgvHienThiThongTinNV.DataSource = BLL_Admin.Instance.GetListAdmin(cboHienThiTheo.SelectedItem.ToString());
+            dgvHienThiThongTinNV.DataSource = BLL_Admin.Instance.GetListNhanVien(cboHienThiTheo.SelectedItem.ToString());
         }
 
         private void btnThem1NV_Click(object sender, EventArgs e)
